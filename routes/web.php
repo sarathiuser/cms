@@ -21,10 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin', function() {
-    return 'you are admin or user';
+    return view('admin.index');
 })->middleware('admin');
 
-Route::resource('admin/pages', 'App\Http\Controllers\Admin\PagesController');
+Route::resource('admin/pages', 'App\Http\Controllers\Admin\PagesController', ['except'=>['show']]);
+Route::resource('admin/users', 'App\Http\Controllers\Admin\UsersController', ['except'=>['create','store','show']]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

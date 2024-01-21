@@ -6,21 +6,23 @@
                 {{ session('status') }}
             </div>
         @endif
-        <br>
-        {{-- <a href="{{ route('pages.create') }}" class="btn btn-default"> Create New </a> --}}
         <table class="table">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>URL</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
                 </tr>
             </thead>
-            @foreach ($pages as $page)
+            @foreach ($model as $user)
                 <tr>
                     <td>
-                        <a href="{{ route('pages.edit', ['page' => $page->id]) }}">{{ $page->title }}
+                        <a href="{{ route('users.edit', ['user' => $user->id]) }}">{{ $user->name }}
                     </td>
-                    <td>{{ $page->url }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        {{ implode(', ',$user->roles()->get()->pluck('name')->toArray()) }}
+                    </td>
                 </tr>
             @endforeach
         </table>
