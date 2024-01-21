@@ -54,6 +54,9 @@ class User extends Authenticatable
     public function hasAnyRole($roles) {
         return null != $this->roles()->whereIn('name', $roles)->first();
     }
+    public function isAdmin() {
+        return $this->hasAnyRole(['admin']);
+    }
 
     public function hasRole($role) {
         return null != $this->roles()->whereIn('name', $role)->first();
