@@ -25,6 +25,7 @@ Route::get('/admin', function() {
 })->middleware('admin');
 
 Route::resource('admin/pages', 'App\Http\Controllers\Admin\PagesController', ['except'=>['show']]);
+Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController', ['except'=>['show']]);
 Route::resource('admin/users', 'App\Http\Controllers\Admin\UsersController', ['except'=>['create','store','show']]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

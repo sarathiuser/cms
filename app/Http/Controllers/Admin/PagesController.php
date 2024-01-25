@@ -75,5 +75,7 @@ class PagesController extends Controller
         if(Auth::user()->cant('delete', $page)){
             return redirect()->route('pages.index');
         }
+        $page->delete();
+        return redirect()->route('pages.index')->with('status','Page Deleted Successfully');
     }
 }

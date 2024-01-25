@@ -15,7 +15,6 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
 
     <body>
@@ -58,6 +57,21 @@
                                             {{ __('Page List') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('pages.create') }}">
+                                            {{ __('Create New') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Blog Posts
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('blog.index') }}">
+                                            {{ __('Post List') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('blog.create') }}">
                                             {{ __('Create New') }}
                                         </a>
                                     </div>
@@ -127,6 +141,8 @@
                 @yield('content')
             </main>
         </div>
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @yield('scripts')
     </body>
 
 </html>
