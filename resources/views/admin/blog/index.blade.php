@@ -12,18 +12,22 @@
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>URL</th>
+                    <th>Author</th>
+                    <th>Slug</th>
+                    <th>Published</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            @foreach ($pages as $page)
+            @foreach ($model as $post)
                 <tr>
                     <td>
-                        <a href="{{ route('pages.edit', ['page' => $page->id]) }}">{{ $page->title }}
+                        <a href="{{ route('blog.edit', ['blog' => $post->id]) }}">{{ $post->title }}
                     </td>
-                    <td>{{ $page->url }}</td>
+                    <td>{{ $post->user()->first()->name }}</td>
+                    <td>{{ $post->slug }}</td>
+                    <td></td>
                     <td class="text-right">
-                        <a href="{{ route('pages.destroy', ['page' => $page->id]) }}" class="btn btn-danger delete-link"
+                        <a href="{{ route('blog.destroy', ['blog' => $post->id]) }}" class="btn btn-danger delete-link"
                             onclick="return confirm('Are you sure you want to delete the record ?')">
                             Delete
                         </a>
